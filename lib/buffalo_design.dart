@@ -1,8 +1,2 @@
-
-import 'buffalo_design_platform_interface.dart';
-
-class BuffaloDesign {
-  Future<String?> getPlatformVersion() {
-    return BuffaloDesignPlatform.instance.getPlatformVersion();
-  }
-}
+export 'package:buffalo_design/modules/button.dart';
+export 'package:buffalo_design/modules/divider.dart';
