@@ -1,11 +1,10 @@
+import 'package:buffalo_design/core/base_widgets/base_widget.dart';
 import 'package:flutter/material.dart';
 
 enum Position { left, right, middle, none }
 
-class BuffaloDivider extends StatefulWidget {
+class BuffaloDivider extends BaseWidget {
   final Position orientation;
-  final EdgeInsets? margin;
-  final EdgeInsets? padding;
   final Widget? child;
   final double? thickness;
   final double? height;
@@ -17,8 +16,6 @@ class BuffaloDivider extends StatefulWidget {
   const BuffaloDivider({
     super.key,
     this.orientation = Position.none,
-    this.margin,
-    this.padding,
     this.child,
     this.height,
     this.thickness,
@@ -29,10 +26,10 @@ class BuffaloDivider extends StatefulWidget {
   });
 
   @override
-  State<BuffaloDivider> createState() => _BuffaloDividerState();
+  _BuffaloDividerState createState() => _BuffaloDividerState();
 }
 
-class _BuffaloDividerState extends State<BuffaloDivider> {
+class _BuffaloDividerState extends BaseWidgetState<BuffaloDivider> {
   late final Widget defaultDivider;
   late final Widget defaultExpandedDivider;
 

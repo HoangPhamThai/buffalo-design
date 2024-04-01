@@ -1,105 +1,59 @@
-import 'package:buffalo_design/core/styles/colors.dart';
+import 'package:buffalo_design/core/base_widgets/base_border_widget.dart';
+import 'package:buffalo_design/core/base_widgets/base_widget.dart';
 import 'package:flutter/material.dart';
 
-enum ButtonState { enable, loading, disable }
-
-class BuffaloButton extends StatefulWidget {
-  final ButtonState state;
-  final Widget child;
+class BuffaloButton extends BaseBorderWidget {
   final bool enableLoading;
   final Widget? loadingChild;
   final VoidCallback? onPressed;
-  final bool strokeOnly;
   final bool hasContentPadding;
-  final double borderRadius;
-  final EdgeInsets? padding;
-  final EdgeInsets? margin;
-  final double? height;
-  final double? width;
-  final double minWidth;
-  final double borderWidth;
 
-  final Color? color;
+  final bool isLoading;
+
+  final Color? contentColor;
   final Color? hoverColor;
-  final Color disabledColor;
-  final Color backgroundColor;
-  final Color strokeColor;
-  final Color strokeOnlyColor;
 
   const BuffaloButton({
     super.key,
-    required this.child,
     this.enableLoading = false,
     this.loadingChild,
     this.onPressed,
-    this.state = ButtonState.enable,
-    this.strokeOnly = false,
-    this.backgroundColor = Colors.white,
-    this.borderRadius = 10,
-    this.strokeColor = CommonColor.primary,
-    this.padding,
-    this.margin,
-    this.height = 48,
-    this.minWidth = 120,
-    this.width,
     this.hoverColor,
     this.hasContentPadding = true,
-    this.borderWidth = 1,
-    this.strokeOnlyColor = CommonColor.primary,
-    this.disabledColor = CommonColor.disabled,
-    this.color,
+    this.contentColor,
+    this.isLoading = false,
+    super.height = 48,
+    super.minWidth = 120,
+    super.padding,
+    super.margin,
+    super.status,
+    required super.child,
+    super.strokeOnly,
+    super.backgroundColor,
+    super.borderColor,
+    super.borderRadius,
+    super.borderWidth,
+    super.customBorderRadius,
+    super.disabledColor,
+    super.strokeColor,
+    super.strokeOnlyColor,
+    super.needBorder,
   });
 
   @override
-  State<BuffaloButton> createState() => _BuffaloButtonState();
+  _BuffaloButtonState createState() => _BuffaloButtonState();
 }
 
-class _BuffaloButtonState extends State<BuffaloButton> {
-  Color getBorderColor() {
-    if (widget.state == ButtonState.disable) {
-      print('return disable border');
-      return widget.disabledColor;
-    }
-    if (widget.strokeOnly) {
-      print('return stroke only border');
-      return widget.strokeOnlyColor;
-    }
-    print('return stroke border');
-    return widget.strokeColor;
-  }
-
-  Color getBackgroundColor() {
-    if (widget.state == ButtonState.disable) {
-      return Colors.grey.withOpacity(0.2);
-    }
-    if (widget.strokeOnly) {
-      return widget.backgroundColor;
-    }
-    return widget.color ?? Theme.of(context).primaryColor;
-    // if (widget.state == ButtonState.enable) {
-    //   return widget.color ?? Theme.of(context).primaryColor;
-    // }
-    // return Colors.grey;
-  }
-
-  Color getForegroundColor() {
-    if (widget.state == ButtonState.disable) {
-      return Colors.grey;
-    }
-    return widget.strokeOnly ? CommonColor.primary : Colors.white;
-  }
-
+class _BuffaloButtonState extends BaseBorderWidgetState<BuffaloButton> {
   Widget renderLoadingWidget() {
-    if (widget.state == ButtonState.loading) {
+    if (widget.isLoading) {
       return widget.loadingChild ??
           Container(
             margin: const EdgeInsets.only(right: 14),
             height: 20,
             width: 20,
             child: CircularProgressIndicator(
-              color: widget.strokeOnly
-                  ? widget.color ?? Theme.of(context).primaryColor
-                  : Colors.white,
+              color: widget.strokeOnly ? widget.contentColor ?? Theme.of(context).primaryColor : Colors.white,
             ),
           );
     }
@@ -108,45 +62,45 @@ class _BuffaloButtonState extends State<BuffaloButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: widget.padding,
-      margin: widget.margin,
-      height: widget.height,
-      child: TextButton(
-        style: ButtonStyle(
-          padding: widget.hasContentPadding
-              ? MaterialStateProperty.all(
-                  const EdgeInsets.symmetric(vertical: 0, horizontal: 14))
-              : MaterialStateProperty.all(EdgeInsets.zero),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              side: BorderSide(
-                width: widget.borderWidth,
-                color: getBorderColor(),
+    return BaseBorderWidget(
+        padding: widget.hasContentPadding ? widget.padding ?? const EdgeInsets.symmetric(vertical: 0, horizontal: 14) : EdgeInsets.zero,
+        margin: widget.margin,
+        customBorderRadius: widget.customBorderRadius,
+        borderRadius: widget.borderRadius,
+        borderWidth: widget.borderWidth,
+        backgroundColor: widget.backgroundColor,
+        borderColor: widget.borderColor,
+        strokeOnly: widget.strokeOnly,
+        status: widget.status,
+        strokeColor: widget.strokeColor,
+        strokeOnlyColor: widget.strokeOnlyColor,
+        disabledColor: widget.disabledColor,
+        height: widget.height,
+        width: widget.width,
+        minWidth: widget.minWidth,
+        needBorder: widget.needBorder,
+        child: GestureDetector(
+          onTap: widget.status == WidgetStatus.enable ? widget.onPressed : null,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              renderLoadingWidget(),
+              AbsorbPointer(
+                absorbing: true,
+                child: TextButton(
+                  style: ButtonStyle(
+                    foregroundColor: MaterialStateProperty.all(
+                      widget.strokeOnly ? widget.contentColor ?? Theme.of(context).primaryColor : Colors.white,
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: widget.child!,
+                ),
               ),
-              borderRadius: BorderRadius.all(
-                Radius.circular(widget.borderRadius),
-              ),
-            ),
+            ],
           ),
-          minimumSize: MaterialStateProperty.all(
-            Size.fromWidth(widget.minWidth),
-          ),
-          foregroundColor: MaterialStateProperty.all(getForegroundColor()),
-          backgroundColor: MaterialStateProperty.all(getBackgroundColor()),
-          overlayColor: MaterialStateProperty.all(Colors.transparent),
-        ),
-        onPressed: widget.state == ButtonState.enable ? widget.onPressed : null,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            renderLoadingWidget(),
-            widget.child,
-          ],
-        ),
-      ),
-    );
+        ));
   }
 }
