@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            BuffaloButton(child: Text('abc'), state: ButtonState.enable),
+            BFButton(child: Text('abc'), state: ButtonState.enable),
           ],
         ),
       ),

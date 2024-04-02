@@ -2,7 +2,7 @@ import 'package:buffalo_design/core/base_widgets/base_border_widget.dart';
 import 'package:buffalo_design/utils/utils.dart';
 import 'package:flutter/material.dart';
 
-class DateRangeInput extends BaseBorderWidget {
+class BFDateRangeInput extends BaseBorderWidget {
   final Widget? customFromDate;
   final Widget? customToDate;
   final String fromDateLabel;
@@ -23,7 +23,7 @@ class DateRangeInput extends BaseBorderWidget {
   final String? initStartDate;
   final String? initEndDate;
 
-  const DateRangeInput({
+  const BFDateRangeInput({
     super.key,
     required this.fromDateLabel,
     required this.toDateLabel,
@@ -59,7 +59,7 @@ class DateRangeInput extends BaseBorderWidget {
   _DateRangeInputState createState() => _DateRangeInputState();
 }
 
-class _DateRangeInputState extends BaseBorderWidgetState<DateRangeInput> {
+class _DateRangeInputState extends BaseBorderWidgetState<BFDateRangeInput> {
   late Widget fromDateWidget;
   late Widget toDateWidget;
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 enum Position { left, right, middle, none }
 
-class BuffaloDivider extends BaseWidget {
+class BFDivider extends BaseWidget {
   final Position orientation;
   final Widget? child;
   final double? thickness;
@@ -13,7 +13,7 @@ class BuffaloDivider extends BaseWidget {
   final Color? color;
   final double spaceToBorder;
 
-  const BuffaloDivider({
+  const BFDivider({
     super.key,
     this.orientation = Position.none,
     this.child,
@@ -29,7 +29,7 @@ class BuffaloDivider extends BaseWidget {
   _BuffaloDividerState createState() => _BuffaloDividerState();
 }
 
-class _BuffaloDividerState extends BaseWidgetState<BuffaloDivider> {
+class _BuffaloDividerState extends BaseWidgetState<BFDivider> {
   late final Widget defaultDivider;
   late final Widget defaultExpandedDivider;
 

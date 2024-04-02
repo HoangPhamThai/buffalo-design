@@ -66,7 +66,7 @@ class BaseBorderWidgetState<T extends BaseBorderWidget> extends BaseWidgetState<
   Color getBackgroundColor() {
     if (widget.status == WidgetStatus.disable) {
       print('background color grey');
-      return Colors.grey.withOpacity(0.2);
+      return CommonColor.disableBackground;
     }
     if (widget.strokeOnly) {
       print('background color white');
@@ -91,7 +91,7 @@ class BaseBorderWidgetState<T extends BaseBorderWidget> extends BaseWidgetState<
               ),
         decoration: BoxDecoration(
           borderRadius: widget.needBorder ? _customBorderRadius : null,
-          border: widget.needBorder ? Border.all(color: getBorderColor()) : null,
+          border: widget.needBorder ? Border.all(color: getBorderColor(), width: widget.borderWidth) : null,
           color: getBackgroundColor(),
         ),
         child: widget.child,

@@ -2,7 +2,7 @@ import 'package:buffalo_design/core/base_widgets/base_border_widget.dart';
 import 'package:buffalo_design/core/base_widgets/base_widget.dart';
 import 'package:flutter/material.dart';
 
-class BuffaloButton extends BaseBorderWidget {
+class BFButton extends BaseBorderWidget {
   final bool enableLoading;
   final Widget? loadingChild;
   final VoidCallback? onPressed;
@@ -13,7 +13,7 @@ class BuffaloButton extends BaseBorderWidget {
   final Color? contentColor;
   final Color? hoverColor;
 
-  const BuffaloButton({
+  const BFButton({
     super.key,
     this.enableLoading = false,
     this.loadingChild,
@@ -44,7 +44,7 @@ class BuffaloButton extends BaseBorderWidget {
   _BuffaloButtonState createState() => _BuffaloButtonState();
 }
 
-class _BuffaloButtonState extends BaseBorderWidgetState<BuffaloButton> {
+class _BuffaloButtonState extends BaseBorderWidgetState<BFButton> {
   Widget renderLoadingWidget() {
     if (widget.isLoading) {
       return widget.loadingChild ??
