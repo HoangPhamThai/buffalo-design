@@ -10,4 +10,7 @@ class CommonColor {
   static const Color successBackground = Color(0xFFEBF7EE);
   static const Color warningBackground = Color(0xFFFFF8EF);
   static const Color warningContent = Color(0xFFE18F01);
+
+  static const Color greenLine = Color(0xff50B566);
+  static const Color greyLine = Color(0xffEAEAEA);
 }

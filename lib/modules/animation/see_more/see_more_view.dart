@@ -149,10 +149,10 @@ class _SeeMoreViewState extends BaseWidgetState<BFSeeMoreView> {
                     duration: widget.duration,
                   );
                 }),
-            renderSeeIndicator(),
           ] else ...[
             widget.child!
           ],
+          renderSeeIndicator(),
         ],
       ),
     );

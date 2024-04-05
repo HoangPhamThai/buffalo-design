@@ -65,14 +65,11 @@ class BaseBorderWidgetState<T extends BaseBorderWidget> extends BaseWidgetState<
 
   Color getBackgroundColor() {
     if (widget.status == WidgetStatus.disable) {
-      print('background color grey');
       return CommonColor.disableBackground;
     }
     if (widget.strokeOnly) {
-      print('background color white');
       return Colors.white;
     }
-    print('background color input');
     return widget.backgroundColor;
   }
 

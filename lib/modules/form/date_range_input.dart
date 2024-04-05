@@ -112,10 +112,10 @@ class _DateRangeInputState extends BaseBorderWidgetState<BFDateRangeInput> {
       strokeOnlyColor: widget.strokeOnlyColor,
       disabledColor: widget.disabledColor,
       height: widget.height,
-      width: widget.width,
-      minWidth: widget.minWidth,
+      width: 260,
       needBorder: widget.needBorder,
       child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
         onTap: () {
           showDateRangePicker(
             context: context,
@@ -142,6 +142,9 @@ class _DateRangeInputState extends BaseBorderWidgetState<BFDateRangeInput> {
           });
         },
         child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             renderPrefixWidget(),
             renderDateRangeWidget(),
