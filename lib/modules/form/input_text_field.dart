@@ -38,6 +38,7 @@ class InputTextField extends StatelessWidget {
   final int maxLines;
   final TextStyle? textStyle;
   final double? labelFontSize;
+  final TextStyle? labelStyle;
 
   InputTextField({
     Key? key,
@@ -75,6 +76,7 @@ class InputTextField extends StatelessWidget {
     this.labelHorizontalFlex = 1,
     this.textStyle,
     this.labelFontSize,
+    this.labelStyle,
   })  : assert(minLines <= maxLines),
         super(key: key);
 
@@ -111,6 +113,7 @@ class InputTextField extends StatelessWidget {
       label: label!,
       isRequired: required,
       margin: margin,
+      style: labelStyle,
     );
   }
 
