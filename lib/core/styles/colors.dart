@@ -13,4 +13,7 @@ class CommonColor {
 
   static const Color greenLine = Color(0xff50B566);
   static const Color greyLine = Color(0xffEAEAEA);
+
+  static const Color borderGrey = Color(0xffC8C8C8);
+  static const Color backgroundGrey = Color(0xffF9F9F9);
 }

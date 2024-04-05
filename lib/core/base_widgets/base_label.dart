@@ -1,11 +1,12 @@
+import 'package:buffalo_design/core/base_widgets/base_widget.dart';
 import 'package:flutter/material.dart';
 
 enum MarkPlace { front, back }
 
-class BaseLabel extends StatelessWidget {
+class BaseLabel extends BaseWidget {
   const BaseLabel({
     super.key,
-    this.labelMargin,
+    super.margin,
     required this.label,
     this.isRequired = false,
     this.style,
@@ -15,7 +16,6 @@ class BaseLabel extends StatelessWidget {
 
   final String label;
   final bool isRequired;
-  final EdgeInsets? labelMargin;
   final TextStyle? style;
   final bool hasColon;
   final MarkPlace? markPlace;
@@ -23,7 +23,7 @@ class BaseLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: labelMargin,
+      margin: margin,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

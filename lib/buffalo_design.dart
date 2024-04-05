@@ -10,3 +10,4 @@ export 'package:buffalo_design/modules/dialog/dialog.dart';
 export 'package:buffalo_design/modules/timeline/time_line_widget.dart';
 export 'package:buffalo_design/modules/timeline/entities/time_line_entity.dart';
 export 'package:buffalo_design/modules/layout/base_screen/base_screen.dart';
+export 'package:buffalo_design/modules/form/input_text_field.dart';
