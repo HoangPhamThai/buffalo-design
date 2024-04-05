@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 enum MarkPlace { front, back }
 
-class BaseLabel extends BaseWidget {
+class BaseLabel extends StatelessWidget {
   const BaseLabel({
     super.key,
-    super.margin,
+    this.margin,
     required this.label,
     this.isRequired = false,
     this.style,
@@ -19,9 +19,11 @@ class BaseLabel extends BaseWidget {
   final TextStyle? style;
   final bool hasColon;
   final MarkPlace? markPlace;
+  final EdgeInsets? margin;
 
   @override
   Widget build(BuildContext context) {
+    print('label = $label');
     return Container(
       margin: margin,
       child: Row(
