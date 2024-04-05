@@ -24,6 +24,16 @@ class BaseWidget extends StatefulWidget {
 
 class BaseWidgetState<T extends BaseWidget> extends State<T> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return IgnorePointer(
       ignoring: widget.status == WidgetStatus.disable,

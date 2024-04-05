@@ -23,7 +23,6 @@ class BaseLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('label = $label');
     return Container(
       margin: margin,
       child: Row(

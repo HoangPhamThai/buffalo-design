@@ -13,6 +13,16 @@ abstract class BaseScreen extends StatefulWidget {
 
 class BaseScreenState<T extends BaseScreen> extends State<BaseScreen> with ResponsiveLayoutBuilder {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return buildLayout(context);
   }

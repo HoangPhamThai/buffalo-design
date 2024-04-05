@@ -3,7 +3,7 @@ import 'package:buffalo_design/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class InputTextField extends StatelessWidget {
+class BFInputTextField extends StatelessWidget {
   final String? label;
   final String? labelFloating;
   final String? hint;
@@ -40,7 +40,7 @@ class InputTextField extends StatelessWidget {
   final double? labelFontSize;
   final TextStyle? labelStyle;
 
-  InputTextField({
+  BFInputTextField({
     Key? key,
     this.label,
     this.hint = '',
@@ -74,7 +74,7 @@ class InputTextField extends StatelessWidget {
     this.borderColor,
     this.hintStyle,
     this.labelHorizontalFlex = 1,
-    this.textStyle,
+    this.textStyle = const TextStyle(color: Colors.black),
     this.labelFontSize,
     this.labelStyle,
   })  : assert(minLines <= maxLines),
