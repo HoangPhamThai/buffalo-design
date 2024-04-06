@@ -15,3 +15,5 @@ export 'package:buffalo_design/modules/form/validation.dart';
 export 'package:buffalo_design/modules/menu/menu.dart';
 export 'package:buffalo_design/modules/menu/menu_item.dart';
 export 'package:buffalo_design/modules/menu/menu_title.dart';
+export 'package:buffalo_design/modules/animation/bounce/bounce.dart';
+export 'package:buffalo_design/modules/animation/zoom/zoom.dart';
