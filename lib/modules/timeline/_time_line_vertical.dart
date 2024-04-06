@@ -48,6 +48,7 @@ class _TimeLineVerticalWidgetState extends BaseWidgetState<TimeLineVerticalWidge
             margin: EdgeInsets.only(top: item.key == 0 ? defaultPadding : 0),
             child: Column(
               children: [
+                /// Top line
                 if (item.key != 0) ...[
                   Container(
                     width: defaultLineWidth,
@@ -81,11 +82,15 @@ class _TimeLineVerticalWidgetState extends BaseWidgetState<TimeLineVerticalWidge
                     strokeColor: CommonColor.greyLine,
                   );
                 }),
-                Expanded(
-                    child: Container(
-                  width: defaultLineWidth,
-                  color: Colors.blue,
-                )),
+
+                /// Bottom line
+                if (item.key != (widget.items.length - 1)) ...[
+                  Expanded(
+                      child: Container(
+                    width: defaultLineWidth,
+                    color: Colors.blue,
+                  )),
+                ],
               ],
             ),
           ),
