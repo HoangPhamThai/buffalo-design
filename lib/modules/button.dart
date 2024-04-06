@@ -3,23 +3,21 @@ import 'package:buffalo_design/core/base_widgets/base_widget.dart';
 import 'package:flutter/material.dart';
 
 class BFButton extends BaseBorderWidget {
-  final bool enableLoading;
+  /// Custom loading indicator
   final Widget? loadingChild;
-  final VoidCallback? onPressed;
-  final bool hasContentPadding;
 
+  final VoidCallback? onPressed;
+
+  /// set to [true] to show loading indicator
   final bool isLoading;
 
+  /// if [strokeOnly] is true, the content will have [contentColor]
   final Color? contentColor;
-  final Color? hoverColor;
 
   const BFButton({
     super.key,
-    this.enableLoading = false,
     this.loadingChild,
     this.onPressed,
-    this.hoverColor,
-    this.hasContentPadding = true,
     this.contentColor,
     this.isLoading = false,
     super.height = 48,
@@ -28,15 +26,37 @@ class BFButton extends BaseBorderWidget {
     super.margin,
     super.status,
     required super.child,
+
+    /// set to true, the button will have no background color
     super.strokeOnly,
+
+    /// background color of the button
+    /// only work when [needBorder] is true, [strokeOnly] is false and [status] is enable
     super.backgroundColor,
+
+    /// the border's color
+    /// only work when [needBorder] is true, [strokeOnly] is false and [status] is enable
     super.borderColor,
+
+    /// the border's radius
+    /// only work when [needBorder] is true, [strokeOnly] is false and [status] is enable
     super.borderRadius,
+
+    /// the border's width
+    /// only work when [needBorder] is true, [strokeOnly] is false and [status] is enable
     super.borderWidth,
+
+    /// customize the border, e.g. only have border in the top corners
+    /// only work when [needBorder] is true
     super.customBorderRadius,
+
+    /// the color of button when [status] is disable
     super.disabledColor,
+
+    /// the border's color when [strokeOnly] is true
     super.strokeColor,
-    super.strokeOnlyColor,
+
+    /// set to [true] to show border
     super.needBorder,
   });
 
@@ -48,8 +68,7 @@ class _BuffaloButtonState extends BaseBorderWidgetState<BFButton> {
   Widget renderLoadingWidget() {
     if (widget.isLoading) {
       return widget.loadingChild ??
-          Container(
-            margin: const EdgeInsets.only(right: 14),
+          SizedBox(
             height: 20,
             width: 20,
             child: CircularProgressIndicator(
@@ -63,7 +82,7 @@ class _BuffaloButtonState extends BaseBorderWidgetState<BFButton> {
   @override
   Widget build(BuildContext context) {
     return BaseBorderWidget(
-        padding: widget.hasContentPadding ? widget.padding ?? const EdgeInsets.symmetric(vertical: 0, horizontal: 14) : EdgeInsets.zero,
+        padding: widget.padding ?? const EdgeInsets.symmetric(horizontal: 8),
         margin: widget.margin,
         customBorderRadius: widget.customBorderRadius,
         borderRadius: widget.borderRadius,
@@ -73,7 +92,6 @@ class _BuffaloButtonState extends BaseBorderWidgetState<BFButton> {
         strokeOnly: widget.strokeOnly,
         status: widget.status,
         strokeColor: widget.strokeColor,
-        strokeOnlyColor: widget.strokeOnlyColor,
         disabledColor: widget.disabledColor,
         height: widget.height,
         width: widget.width,

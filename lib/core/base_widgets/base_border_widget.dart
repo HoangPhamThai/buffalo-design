@@ -3,14 +3,33 @@ import 'package:buffalo_design/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class BaseBorderWidget extends BaseWidget {
+  /// customize the border, e.g. only have border in the top corners
+  /// only work when [needBorder] is true
   final BorderRadius? customBorderRadius;
+
+  /// the border's radius
+  /// only work when [needBorder] is true, [strokeOnly] is false and [status] is enable
   final double borderRadius;
+
+  /// the border's width
+  /// only work when [needBorder] is true, [strokeOnly] is false and [status] is enable
   final double borderWidth;
+
+  /// background color of the button
+  /// only work when [needBorder] is true, [strokeOnly] is false and [status] is enable
   final Color backgroundColor;
+
+  /// the border's color
+  /// only work when [needBorder] is true, [strokeOnly] is false and [status] is enable
   final Color borderColor;
+
+  /// set to true, the button will have no background color
   final bool strokeOnly;
-  final Color strokeOnlyColor;
+
+  /// the border's color when [strokeOnly] is true
   final Color strokeColor;
+
+  /// the color of button when [status] is disable
   final Color disabledColor;
   final double? height;
   final double? width;
@@ -25,7 +44,6 @@ class BaseBorderWidget extends BaseWidget {
     this.backgroundColor = CommonColor.primary,
     this.borderColor = CommonColor.primary,
     this.strokeOnly = false,
-    this.strokeOnlyColor = CommonColor.primary,
     this.strokeColor = CommonColor.primary,
     this.disabledColor = CommonColor.disabled,
     this.height,
@@ -58,9 +76,9 @@ class BaseBorderWidgetState<T extends BaseBorderWidget> extends BaseWidgetState<
       return widget.disabledColor;
     }
     if (widget.strokeOnly) {
-      return widget.strokeOnlyColor;
+      return widget.strokeColor;
     }
-    return widget.strokeColor;
+    return widget.borderColor;
   }
 
   Color getBackgroundColor() {

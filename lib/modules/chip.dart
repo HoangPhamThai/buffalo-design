@@ -18,7 +18,6 @@ class BFChip extends BaseBorderWidget {
       super.borderWidth,
       super.customBorderRadius,
       super.strokeColor,
-      super.strokeOnlyColor,
       super.needBorder,
       this.defaultPrefixColor,
       this.labelStyle});
@@ -37,7 +36,6 @@ class BFChip extends BaseBorderWidget {
       super.borderWidth,
       super.customBorderRadius,
       super.strokeColor = CommonColor.successBackground,
-      super.strokeOnlyColor,
       super.needBorder,
       this.defaultPrefixColor = CommonColor.successContent,
       this.labelStyle = const TextStyle(fontSize: 14, color: CommonColor.successContent, fontWeight: FontWeight.w700)});
@@ -56,7 +54,6 @@ class BFChip extends BaseBorderWidget {
       super.borderWidth,
       super.customBorderRadius,
       super.strokeColor = CommonColor.warningBackground,
-      super.strokeOnlyColor,
       super.needBorder,
       this.defaultPrefixColor = CommonColor.warningContent,
       this.labelStyle = const TextStyle(fontSize: 14, color: CommonColor.warningContent, fontWeight: FontWeight.w700)});
@@ -75,11 +72,11 @@ class BFChip extends BaseBorderWidget {
       super.borderWidth,
       super.customBorderRadius,
       super.strokeColor = CommonColor.disableBackground,
-      super.strokeOnlyColor,
       super.needBorder,
       this.defaultPrefixColor = CommonColor.disabledContent,
       this.labelStyle = const TextStyle(fontSize: 14, color: CommonColor.disabledContent, fontWeight: FontWeight.w700)});
 
+  /// if it's null, the default widget is a dot
   final Widget? prefixWidget;
   final Widget? suffixWidget;
   final String label;
