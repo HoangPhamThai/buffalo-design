@@ -150,6 +150,26 @@ class _MyHomeAppState extends State<MyHomeApp> {
                     lineLength: 50,
                     direction: Axis.vertical,
                   ),
+                  BFTimeLine(
+                    currentPosition: 3,
+                    items: [
+                      TimeLineEntity(description: "20-02-2034 20-02-2034", title: 'Create booking booking'),
+                      TimeLineEntity(description: "20-02-2034", title: 'Create booking for someone'),
+                      TimeLineEntity(
+                          title: 'Create booking',
+                          customDescription: Container(
+                            padding: const EdgeInsets.all(10),
+                            color: Colors.grey,
+                            child: const Text('20-02-2034 20-02-2034'),
+                          )),
+                      TimeLineEntity(description: "20-02-2034", title: 'Create booking'),
+                      TimeLineEntity(description: "20-02-2034", title: 'Create booking'),
+                      TimeLineEntity(description: "20-02-2034", title: 'Create booking'),
+                    ],
+                    displayMode: DisplayMode.opposite,
+                    lineLength: 50,
+                    direction: Axis.horizontal,
+                  ),
                   BFBounceAnimation(
                     child: BFZoomAnimation(
                       status: WidgetStatus.enable,
