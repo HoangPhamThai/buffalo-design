@@ -31,6 +31,8 @@ class BFDivider extends BaseWidget {
 
 class _BuffaloDividerState extends BaseWidgetState<BFDivider> {
   late final Widget defaultDivider;
+  late final Widget leftDivider;
+  late final Widget rightDivider;
   late final Widget defaultExpandedDivider;
 
   Widget renderDividerWithChild() {
@@ -41,21 +43,21 @@ class _BuffaloDividerState extends BaseWidgetState<BFDivider> {
           children: [
             SizedBox(
               width: widget.spaceToBorder,
-              child: defaultDivider,
+              child: leftDivider,
             ),
             widget.child!,
-            defaultExpandedDivider,
+            Expanded(child: rightDivider),
           ],
         );
       case Position.right:
         return Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            defaultExpandedDivider,
+            Expanded(child: leftDivider),
             widget.child!,
             SizedBox(
               width: widget.spaceToBorder,
-              child: defaultDivider,
+              child: rightDivider,
             ),
           ],
         );
@@ -63,9 +65,9 @@ class _BuffaloDividerState extends BaseWidgetState<BFDivider> {
         return Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            defaultExpandedDivider,
+            Expanded(child: leftDivider),
             widget.child!,
-            defaultExpandedDivider,
+            Expanded(child: rightDivider),
           ],
         );
       case Position.none:
@@ -80,6 +82,20 @@ class _BuffaloDividerState extends BaseWidgetState<BFDivider> {
       height: widget.height,
       thickness: widget.thickness,
       indent: widget.indent,
+      endIndent: widget.endIndent,
+      color: widget.color,
+    );
+
+    leftDivider = Divider(
+      height: widget.height,
+      thickness: widget.thickness,
+      indent: widget.indent,
+      color: widget.color,
+    );
+
+    rightDivider = Divider(
+      height: widget.height,
+      thickness: widget.thickness,
       endIndent: widget.endIndent,
       color: widget.color,
     );

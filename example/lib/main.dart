@@ -75,9 +75,36 @@ class _MyHomeAppState extends State<MyHomeApp> {
                 isLoading: true,
                 child: Text("Run "),
               ),
+              BFDivider(),
               BFDivider(
-                child: Text('Title'),
+                child: Text('Label with default spacing of 50 to the left'),
+                orientation: Position.left,
+              ),
+              BFDivider(
+                child: Text('Label with the spacing of 100 to the left'),
+                orientation: Position.left,
+                spaceToBorder: 100,
+              ),
+              BFDivider(
+                child: Text('Middle'),
+                orientation: Position.middle,
+              ),
+              BFDivider(
+                child: Text('Right'),
                 orientation: Position.right,
+              ),
+              BFDivider(
+                child: Padding(padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10), child: Text('Left with green lines and padding')),
+                orientation: Position.left,
+                color: Colors.green,
+              ),
+              BFDivider(
+                child: Text('Middle with green line and some indent'),
+                orientation: Position.middle,
+                color: Colors.green,
+                thickness: 3,
+                indent: 20,
+                endIndent: 20,
               ),
               BFSeeMoreText(content: "this is a long content that I think its total characters exceeds 50 characters", labelSeeLess: "less", labelSeeMore: "more"),
               BFDateRangeInput(
@@ -195,34 +222,41 @@ class _MyHomeAppState extends State<MyHomeApp> {
                 label: "abc",
                 required: true,
               ),
-              BFColumn(withDefaultDivider: true, spacing: 20, children: [
-                Text('abc'),
-                Text('abc'),
-                Text('abc'),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.add),
-                    Text('abc'),
-                  ],
-                )
-              ]),
-              BFRow(withDefaultDivider: true, children: [
-                Container(
-                  height: 30,
-                  child: Text('abc'),
-                ),
-                Text('abc'),
-                Text('abc'),
-                Text('abc'),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.add),
-                    Text('abc'),
-                  ],
-                )
-              ]),
+              BFColumn(
+                withDefaultDivider: true,
+                spacing: 20,
+                children: [
+                  Text('abc'),
+                  Text('abc'),
+                  Text('abc'),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.add),
+                      Text('abc'),
+                    ],
+                  )
+                ],
+              ),
+              BFRow(
+                withDefaultDivider: true,
+                children: [
+                  Container(
+                    height: 30,
+                    child: Text('abc'),
+                  ),
+                  Text('abc'),
+                  Text('abc'),
+                  Text('abc'),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.add),
+                      Text('abc'),
+                    ],
+                  )
+                ],
+              ),
             ],
           ),
         ));
