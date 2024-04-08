@@ -5,11 +5,13 @@ class BaseCircle extends BaseBorderWidget {
   const BaseCircle({
     super.key,
     super.backgroundColor,
-    this.radius = 12,
+    this.radius = 6,
     super.borderWidth,
     super.borderColor,
     super.strokeOnly,
     super.strokeColor,
+    super.padding,
+    super.child,
   });
 
   final double radius;
@@ -22,14 +24,16 @@ class _BaseCircleState extends BaseBorderWidgetState<BaseCircle> {
   @override
   Widget build(BuildContext context) {
     return BaseBorderWidget(
-      height: widget.radius,
-      width: widget.radius,
+      padding: widget.padding,
+      height: widget.radius * 2,
+      width: widget.radius * 2,
       borderRadius: widget.radius,
       strokeColor: widget.strokeColor,
       backgroundColor: widget.backgroundColor,
       strokeOnly: widget.strokeOnly,
       borderWidth: widget.borderWidth,
       borderColor: widget.borderColor,
+      child: widget.child,
     );
   }
 }
