@@ -91,7 +91,41 @@ You can customize the separator by passing your own widget to `customSeparator`.
 
 ## Divider
 
+<img width="582" alt="image" src="https://github.com/HoangPhamThai/buffalo-design/assets/48664161/2d4e1492-f518-4aec-ab6a-d59312cc8cc0">
 
+Default divider:
+
+```
+BFDivider(),
+```
+
+Divider with a label on the left corner:
+
+```
+BFDivider(
+  child: Text('Left'),
+  orientation: Position.left,
+),
+```
+
+Change the `orientation` to `Position.middle` or `Position.right` to have the desired position of the label.
+
+You can customize the divider as well.
+
+```
+BFDivider(
+  child: Text('Middle with green line and some indent'),
+  orientation: Position.middle,
+  color: Colors.green,
+  thickness: 3,
+  indent: 20,
+  endIndent: 20,
+),
+```
+
+When setting `orientation` to `Position.left` or `Position.right`, you can use `spaceToBorder` to change the distance between the child and the left/right corner.
+
+<img width="635" alt="image" src="https://github.com/HoangPhamThai/buffalo-design/assets/48664161/1412f24f-73e7-482d-8127-d6399a3ae1ae">
 
 ## See more/less text
 
