@@ -41,6 +41,34 @@ BFAvatar(
 
 ## Button
 ## Chip
+
+<img width="462" alt="image" src="https://github.com/HoangPhamThai/buffalo-design/assets/48664161/39c38140-3bfb-4740-a93d-f0c60a555ca7">
+
+
+```
+BFChip.success(
+  label: "Success",
+),
+```
+```
+BFChip.warning(
+  label: "Warning",
+),
+```
+```
+BFChip.disable(
+  label: "Disable",
+),
+```
+```
+BFChip(
+  label: "Custom",
+  labelStyle: TextStyle(color: Colors.blue),
+  defaultPrefixColor: Colors.orange,
+  backgroundColor: Colors.yellow,
+)
+```
+
 ## Column/Row
 <img width="476" alt="image" src="https://github.com/HoangPhamThai/buffalo-design/assets/48664161/c40379b4-c198-475b-93ab-a2ab40748dca">
 
@@ -128,6 +156,43 @@ When setting `orientation` to `Position.left` or `Position.right`, you can use `
 <img width="635" alt="image" src="https://github.com/HoangPhamThai/buffalo-design/assets/48664161/1412f24f-73e7-482d-8127-d6399a3ae1ae">
 
 ## See more/less text
+
+<img width="500" alt="image" src="https://github.com/HoangPhamThai/buffalo-design/assets/48664161/2e151b10-f675-4c02-af3c-22482cced4ba">
+
+This widget does not clip the content if its length is lower than 50 characters by default.
+
+```
+BFSeeMoreText(
+  content: "A short sentence",
+  labelSeeLess: "See less",
+  labelSeeMore: "See more",
+),
+```
+
+```
+BFSeeMoreText(
+  content: "this is a long sentence that I think its total characters exceeds 50 characters",
+  labelSeeLess: "See less",
+  labelSeeMore: "See more",
+),
+BFSeeMoreText(
+  content: "this is a long sentence that I think its total characters exceeds 50 characters",
+  labelSeeLess: "See less",
+  labelSeeMore: "See more",
+),
+```
+The styles of the content and the See more/less can be customized by altering `contentStyle` and `moreLessStyle`
+
+<img width="530" alt="image" src="https://github.com/HoangPhamThai/buffalo-design/assets/48664161/e44850c8-53ce-4987-9c70-5ea68522d81c">
+
+```
+BFSeeMoreText(
+  content: "this is a very long sentence that I think its total characters exceeds 100 characters, or I must write more to get that.",
+  labelSeeLess: "See less",
+  labelSeeMore: "See more",
+  minLength: 100,
+),
+```
 
 ## Responsive UI:
 
