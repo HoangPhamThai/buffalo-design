@@ -43,7 +43,6 @@ class _AvatarScreenState extends State<AvatarScreen> {
                   ),
                   BFAvatar(
                     imageUrl: 'https://i.pravatar.cc/150?img=5',
-                    alternativeName: "John Doe",
                   ),
                 ],
               ),
@@ -61,6 +60,7 @@ class _AvatarScreenState extends State<AvatarScreen> {
                     imageUrl: '',
                     badgeColor: Colors.orange,
                     showBadge: true,
+                    radius: 36,
                   ),
                   BFAvatar(
                     imageUrl: '',
