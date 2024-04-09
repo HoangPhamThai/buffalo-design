@@ -1,14 +1,14 @@
 import 'package:buffalo_design/buffalo_design.dart';
 import 'package:flutter/material.dart';
 
-class PageScreen extends BaseScreen {
-  const PageScreen({super.key});
+class ResponsiveScreen extends BaseScreen {
+  const ResponsiveScreen({super.key});
 
   @override
   _PageScreenState createState() => _PageScreenState();
 }
 
-class _PageScreenState extends BaseScreenState<PageScreen> {
+class _PageScreenState extends BaseScreenState<ResponsiveScreen> {
   late List<Widget> listWidget;
   @override
   void initState() {

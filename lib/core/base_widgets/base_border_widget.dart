@@ -21,7 +21,8 @@ class BaseBorderWidget extends BaseWidget {
 
   /// the border's color
   /// only work when [needBorder] is true, [strokeOnly] is false and [status] is enable
-  final Color borderColor;
+  ///  if empty, the border and background will have the same color
+  final Color? borderColor;
 
   /// the color of button when [status] is disable
   final Color disabledColor;
@@ -36,7 +37,7 @@ class BaseBorderWidget extends BaseWidget {
     this.customBorderRadius,
     this.borderWidth = 1,
     this.backgroundColor = CommonColor.primary,
-    this.borderColor = CommonColor.primary,
+    this.borderColor,
     this.disabledColor = CommonColor.disabled,
     this.height,
     this.width,
@@ -67,7 +68,7 @@ class BaseBorderWidgetState<T extends BaseBorderWidget> extends BaseWidgetState<
     if (widget.status == WidgetStatus.disable) {
       return widget.disabledColor;
     }
-    return widget.borderColor;
+    return widget.borderColor ?? widget.backgroundColor;
   }
 
   Color getBackgroundColor() {

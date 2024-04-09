@@ -73,6 +73,16 @@ class _BuffaloButtonState extends BaseBorderWidgetState<BFButton> {
     return Container();
   }
 
+  Color getForegroundColor() {
+    if (widget.status == WidgetStatus.disable) {
+      return Colors.grey;
+    }
+    if (!widget.strokeOnly) {
+      return Colors.white;
+    }
+    return widget.contentColor ?? Theme.of(context).primaryColor;
+  }
+
   @override
   Widget build(BuildContext context) {
     return BaseBorderWidget(
@@ -101,9 +111,7 @@ class _BuffaloButtonState extends BaseBorderWidgetState<BFButton> {
                 absorbing: true,
                 child: TextButton(
                   style: ButtonStyle(
-                    foregroundColor: MaterialStateProperty.all(
-                      widget.strokeOnly ? widget.contentColor ?? Theme.of(context).primaryColor : Colors.white,
-                    ),
+                    foregroundColor: MaterialStateProperty.all(getForegroundColor()),
                   ),
                   onPressed: () {},
                   child: widget.child!,
