@@ -20,3 +20,4 @@ export 'package:buffalo_design/modules/animation/zoom/zoom.dart';
 export 'package:buffalo_design/modules/list/column.dart';
 export 'package:buffalo_design/modules/list/row.dart';
 export 'package:buffalo_design/modules/avatar/avatar.dart';
+export 'package:buffalo_design/modules/appbar/appbar.dart';

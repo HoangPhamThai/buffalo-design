@@ -1,6 +1,7 @@
 import 'package:buffalo_design/core/base_widgets/base_widget.dart';
-import 'package:buffalo_design_example/page.dart';
 import 'package:buffalo_design_example/pages/avatar.dart';
+import 'package:buffalo_design_example/pages/button.dart';
+import 'package:buffalo_design_example/pages/responsive.dart';
 import 'package:flutter/material.dart';
 
 import 'package:buffalo_design/buffalo_design.dart';
@@ -56,9 +57,15 @@ class _MyHomeAppState extends State<MyHomeApp> {
               ),
               BFButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => PageScreen()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResponsiveScreen()));
                 },
                 child: Text("Rresponsive layout"),
+              ),
+              BFButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ButtonPage()));
+                },
+                child: Text("Buttons"),
               ),
               BFButton(
                 onPressed: () {
