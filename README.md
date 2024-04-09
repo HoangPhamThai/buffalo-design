@@ -40,6 +40,49 @@ BFAvatar(
 ```
 
 ## Button
+
+<img width="347" alt="image" src="https://github.com/HoangPhamThai/buffalo-design/assets/48664161/73dff27c-7828-4aa9-97d6-2d1c351098c1">
+
+Normal button
+
+```
+BFButton(child: Text("Normal button")),
+```
+
+Button with stroke only
+
+```
+BFButton(strokeOnly: true, child: Text("Button with white background")),
+```
+
+Disabled button
+
+```
+BFButton(status: WidgetStatus.disable, child: Text("Disabled button")),
+```
+
+Button with default loading indicator
+
+```
+BFButton(isLoading: true, child: Text("Button with loading indicator")),
+
+BFButton(isLoading: true, strokeOnly: true, child: Text("Stroke Button with loading indicator")),
+```
+
+You can customize the loading widget by passing your own widget to `loadingChild`.
+
+Custom button
+
+```
+BFButton(
+  child: Text("Custom button"),
+  contentColor: Colors.yellow,
+  borderRadius: 20,
+  backgroundColor: Colors.blueAccent,
+  borderColor: Colors.red,
+),
+```
+
 ## Chip
 
 <img width="462" alt="image" src="https://github.com/HoangPhamThai/buffalo-design/assets/48664161/39c38140-3bfb-4740-a93d-f0c60a555ca7">
