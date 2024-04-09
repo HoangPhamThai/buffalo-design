@@ -9,7 +9,6 @@ class BaseCircle extends BaseBorderWidget {
     super.borderWidth,
     super.borderColor,
     super.strokeOnly,
-    super.strokeColor,
     super.padding,
     super.child,
   });
@@ -28,7 +27,6 @@ class _BaseCircleState extends BaseBorderWidgetState<BaseCircle> {
       height: widget.radius * 2,
       width: widget.radius * 2,
       borderRadius: widget.radius,
-      strokeColor: widget.strokeColor,
       backgroundColor: widget.backgroundColor,
       strokeOnly: widget.strokeOnly,
       borderWidth: widget.borderWidth,

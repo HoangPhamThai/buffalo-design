@@ -23,18 +23,12 @@ class BaseBorderWidget extends BaseWidget {
   /// only work when [needBorder] is true, [strokeOnly] is false and [status] is enable
   final Color borderColor;
 
-  /// set to true, the button will have no background color
-  final bool strokeOnly;
-
-  /// the border's color when [strokeOnly] is true
-  final Color strokeColor;
-
   /// the color of button when [status] is disable
   final Color disabledColor;
   final double? height;
   final double? width;
   final double? minWidth;
-  final bool needBorder;
+  final bool strokeOnly;
 
   const BaseBorderWidget({
     Key? key,
@@ -43,13 +37,11 @@ class BaseBorderWidget extends BaseWidget {
     this.borderWidth = 1,
     this.backgroundColor = CommonColor.primary,
     this.borderColor = CommonColor.primary,
-    this.strokeOnly = false,
-    this.strokeColor = CommonColor.primary,
     this.disabledColor = CommonColor.disabled,
     this.height,
     this.width,
     this.minWidth,
-    this.needBorder = true,
+    this.strokeOnly = false,
     super.margin,
     super.padding,
     super.status,
@@ -74,9 +66,6 @@ class BaseBorderWidgetState<T extends BaseBorderWidget> extends BaseWidgetState<
   Color getBorderColor() {
     if (widget.status == WidgetStatus.disable) {
       return widget.disabledColor;
-    }
-    if (widget.strokeOnly) {
-      return widget.strokeColor;
     }
     return widget.borderColor;
   }
@@ -105,8 +94,8 @@ class BaseBorderWidgetState<T extends BaseBorderWidget> extends BaseWidgetState<
                 minWidth: widget.minWidth!,
               ),
         decoration: BoxDecoration(
-          borderRadius: widget.needBorder ? _customBorderRadius : null,
-          border: widget.needBorder ? Border.all(color: getBorderColor(), width: widget.borderWidth) : null,
+          borderRadius: _customBorderRadius,
+          border: Border.all(color: getBorderColor(), width: widget.borderWidth),
           color: getBackgroundColor(),
         ),
         child: widget.child,

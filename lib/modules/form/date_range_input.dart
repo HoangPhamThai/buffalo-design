@@ -38,9 +38,7 @@ class BFDateRangeInput extends BaseBorderWidget {
     this.locale,
     this.currentDate,
     super.strokeOnly,
-    super.strokeColor,
     super.backgroundColor,
-    super.needBorder,
     super.status,
     super.padding,
     super.margin,
@@ -107,11 +105,9 @@ class _DateRangeInputState extends BaseBorderWidgetState<BFDateRangeInput> {
       borderColor: widget.borderColor,
       strokeOnly: widget.strokeOnly,
       status: widget.status,
-      strokeColor: widget.strokeColor,
       disabledColor: widget.disabledColor,
       height: widget.height,
       width: 260,
-      needBorder: widget.needBorder,
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () {

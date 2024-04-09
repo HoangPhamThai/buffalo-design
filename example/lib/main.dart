@@ -67,7 +67,6 @@ class _MyHomeAppState extends State<MyHomeApp> {
                     Navigator.of(context).pop();
                   });
                 },
-                needBorder: true,
                 strokeOnly: false,
                 borderWidth: 3,
                 borderColor: Colors.blue,
@@ -106,21 +105,62 @@ class _MyHomeAppState extends State<MyHomeApp> {
                 indent: 20,
                 endIndent: 20,
               ),
-              BFSeeMoreText(content: "this is a long content that I think its total characters exceeds 50 characters", labelSeeLess: "less", labelSeeMore: "more"),
+              BFSeeMoreText(
+                content: "A short sentence",
+                labelSeeLess: "See less",
+                labelSeeMore: "See more",
+              ),
+              BFSeeMoreText(
+                content: "this is a long sentence that I think its total characters exceeds 50 characters",
+                labelSeeLess: "See less",
+                labelSeeMore: "See more",
+              ),
+              BFSeeMoreText(
+                content: "this is a long sentence that I think its total characters exceeds 50 characters",
+                labelSeeLess: "See less",
+                labelSeeMore: "See more",
+              ),
+              BFSeeMoreText(
+                content: "this is a very long sentence that I think its total characters exceeds 100 characters, or I must write more to get that.",
+                labelSeeLess: "See less",
+                labelSeeMore: "See more",
+                minLength: 100,
+                contentStyle: TextStyle(
+                  fontSize: 16,
+                  color: Colors.lightBlue,
+                ),
+                moreLessStyle: TextStyle(
+                  fontSize: 12,
+                  color: Colors.white,
+                ),
+              ),
               BFDateRangeInput(
                 fromDateLabel: "Tu ngay",
                 toDateLabel: "Den ngay",
                 // strokeOnly: true,
                 padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                 backgroundColor: Colors.grey.withOpacity(0.2),
-                strokeColor: Colors.grey.withOpacity(0.2),
                 endDate: DateTime.now().add(
                   const Duration(days: 90),
                 ),
               ),
-              BFChip.success(
-                label: "In A Long Progress",
-              ),
+              BFRow(children: [
+                BFChip.success(
+                  label: "Success",
+                ),
+                BFChip.warning(
+                  label: "Warning",
+                ),
+                BFChip.disable(
+                  label: "Disable",
+                ),
+                BFChip(
+                  label: "Custom",
+                  labelStyle: TextStyle(color: Colors.blue),
+                  defaultPrefixColor: Colors.orange,
+                  backgroundColor: Colors.yellow,
+                )
+              ]),
               BFSeeMoreView(
                 initHeight: 200,
                 child: Column(

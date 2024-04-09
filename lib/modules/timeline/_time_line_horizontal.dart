@@ -149,20 +149,17 @@ class _TimeLineHorizontalWidgetState extends BaseWidgetState<TimeLineHorizontalW
                 return const BaseCircle(
                   radius: 8,
                   backgroundColor: CommonColor.greenLine,
-                  strokeColor: CommonColor.greenLine,
                 );
               }
               if (item.key == widget.currentPosition) {
                 return const BaseCircle(
                   radius: 12,
                   backgroundColor: CommonColor.warningContent,
-                  strokeColor: CommonColor.warningContent,
                 );
               }
               return const BaseCircle(
                 radius: 8,
                 backgroundColor: CommonColor.greyLine,
-                strokeColor: CommonColor.greyLine,
               );
             }),
           ],
