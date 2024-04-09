@@ -11,14 +11,11 @@ class BFChip extends BaseBorderWidget {
       super.padding,
       super.margin,
       required this.label,
-      super.strokeOnly,
       super.backgroundColor,
       super.borderColor,
       super.borderRadius,
       super.borderWidth,
       super.customBorderRadius,
-      super.strokeColor,
-      super.needBorder,
       this.defaultPrefixColor,
       this.labelStyle});
 
@@ -29,14 +26,11 @@ class BFChip extends BaseBorderWidget {
       super.padding,
       super.margin,
       required this.label,
-      super.strokeOnly = false,
       super.backgroundColor = CommonColor.successBackground,
       super.borderColor,
       super.borderRadius,
       super.borderWidth,
       super.customBorderRadius,
-      super.strokeColor = CommonColor.successBackground,
-      super.needBorder,
       this.defaultPrefixColor = CommonColor.successContent,
       this.labelStyle = const TextStyle(fontSize: 14, color: CommonColor.successContent, fontWeight: FontWeight.w700)});
 
@@ -47,14 +41,11 @@ class BFChip extends BaseBorderWidget {
       super.padding,
       super.margin,
       required this.label,
-      super.strokeOnly = false,
       super.backgroundColor = CommonColor.warningBackground,
       super.borderColor,
       super.borderRadius,
       super.borderWidth,
       super.customBorderRadius,
-      super.strokeColor = CommonColor.warningBackground,
-      super.needBorder,
       this.defaultPrefixColor = CommonColor.warningContent,
       this.labelStyle = const TextStyle(fontSize: 14, color: CommonColor.warningContent, fontWeight: FontWeight.w700)});
 
@@ -65,14 +56,11 @@ class BFChip extends BaseBorderWidget {
       super.padding,
       super.margin,
       required this.label,
-      super.strokeOnly = false,
       super.backgroundColor = CommonColor.disableBackground,
       super.borderColor,
       super.borderRadius,
       super.borderWidth,
       super.customBorderRadius,
-      super.strokeColor = CommonColor.disableBackground,
-      super.needBorder,
       this.defaultPrefixColor = CommonColor.disabledContent,
       this.labelStyle = const TextStyle(fontSize: 14, color: CommonColor.disabledContent, fontWeight: FontWeight.w700)});
 
@@ -92,7 +80,7 @@ class _BuffaloChipState extends BaseBorderWidgetState<BFChip> {
     return widget.prefixWidget ??
         BaseCircle(
           backgroundColor: widget.defaultPrefixColor ?? CommonColor.primary,
-          strokeColor: widget.backgroundColor,
+          borderColor: widget.backgroundColor,
         );
   }
 
@@ -106,10 +94,12 @@ class _BuffaloChipState extends BaseBorderWidgetState<BFChip> {
       padding: widget.padding ?? const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
       margin: widget.margin,
       backgroundColor: widget.backgroundColor,
-      strokeColor: widget.strokeColor,
+      strokeOnly: false,
+      borderColor: widget.backgroundColor,
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           renderPrefix(),
           Padding(

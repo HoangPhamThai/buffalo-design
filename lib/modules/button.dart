@@ -52,12 +52,6 @@ class BFButton extends BaseBorderWidget {
 
     /// the color of button when [status] is disable
     super.disabledColor,
-
-    /// the border's color when [strokeOnly] is true
-    super.strokeColor,
-
-    /// set to [true] to show border
-    super.needBorder,
   });
 
   @override
@@ -91,12 +85,10 @@ class _BuffaloButtonState extends BaseBorderWidgetState<BFButton> {
         borderColor: widget.borderColor,
         strokeOnly: widget.strokeOnly,
         status: widget.status,
-        strokeColor: widget.strokeColor,
         disabledColor: widget.disabledColor,
         height: widget.height,
         width: widget.width,
         minWidth: widget.minWidth,
-        needBorder: widget.needBorder,
         child: GestureDetector(
           onTap: widget.status == WidgetStatus.enable ? widget.onPressed : null,
           child: Row(
