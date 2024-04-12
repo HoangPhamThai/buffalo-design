@@ -126,6 +126,7 @@ class BaseListWidgetState<T extends BaseListWidget> extends BaseWidgetState<Base
     return Container(
       margin: widget.margin,
       padding: widget.padding,
+      alignment: Alignment.center,
       child: renderChild(),
     );
   }

@@ -16,4 +16,7 @@ class CommonColor {
 
   static const Color borderGrey = Color(0xffC8C8C8);
   static const Color backgroundGrey = Color(0xffF9F9F9);
+
+  static const Color colorGreyF0F2F4 = Color(0xffF0F2F4);
+  static const Color colorGrey91979D = Color(0xff91979D);
 }

@@ -1,4 +1,3 @@
-import 'package:buffalo_design/core/base_widgets/base_widget.dart';
 import 'package:flutter/material.dart';
 
 enum MarkPlace { front, back }

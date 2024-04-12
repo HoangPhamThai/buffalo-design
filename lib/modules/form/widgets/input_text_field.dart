@@ -1,3 +1,4 @@
+import 'package:buffalo_design/buffalo_design.dart';
 import 'package:buffalo_design/core/base_widgets/base_form_field.dart';
 import 'package:buffalo_design/core/base_widgets/base_label.dart';
 import 'package:buffalo_design/core/styles/colors.dart';
@@ -9,7 +10,6 @@ class BFInputTextField extends BaseFormField {
   final String? labelFloating;
   final String? hint;
   final TextEditingController? controller;
-  final bool required;
   final String? explain;
   final TextCapitalization textCapitalization;
   final List<TextInputFormatter> inputFormatters;
@@ -45,7 +45,6 @@ class BFInputTextField extends BaseFormField {
     this.label,
     this.hint,
     this.controller,
-    this.required = false,
     this.explain,
     this.initialValue,
     this.textCapitalization = TextCapitalization.sentences,
@@ -76,11 +75,52 @@ class BFInputTextField extends BaseFormField {
     this.textStyle = const TextStyle(color: Colors.black),
     this.labelFontSize,
     this.labelStyle,
-    required super.name,
     super.isRequired,
     super.validator,
-    super.initValue,
     super.status,
+    super.helpText,
+  })  : assert(minLines <= maxLines),
+        super(key: key);
+
+  const BFInputTextField.password({
+    Key? key,
+    this.label,
+    this.hint,
+    this.controller,
+    this.explain,
+    this.initialValue,
+    this.textCapitalization = TextCapitalization.sentences,
+    this.inputFormatters = const [],
+    this.keyboardType,
+    this.onSaved,
+    this.onChanged,
+    this.scrollPadding = const EdgeInsets.all(20),
+    this.labelMargin = const EdgeInsets.only(top: 20, bottom: 10),
+    this.autofocus = false,
+    this.suffixIcon,
+    this.axis = Axis.vertical,
+    this.minLines = 1,
+    this.maxLines = 1,
+    this.labelFloating,
+    this.expandTextField = false,
+    this.prefixIcon,
+    this.shouldObscure = true,
+    this.contentPadding,
+    this.onTap,
+    this.enableBorder,
+    this.border,
+    this.isReadOnly = false,
+    this.fillColor,
+    this.borderColor,
+    this.hintStyle,
+    this.labelHorizontalFlex = 1,
+    this.textStyle = const TextStyle(color: Colors.black),
+    this.labelFontSize,
+    this.labelStyle,
+    super.isRequired,
+    super.validator,
+    super.status,
+    super.helpText,
   })  : assert(minLines <= maxLines),
         super(key: key);
 
@@ -120,10 +160,17 @@ class _BFInputTextFieldState extends BaseFormFieldState<BFInputTextField> {
     if (widget.label == null) return Container();
     return BaseLabel(
       label: widget.label!,
-      isRequired: widget.required,
+      isRequired: widget.isRequired,
       margin: margin,
       style: widget.labelStyle,
     );
+  }
+
+  FormFieldValidator<String>? getValidator() {
+    if (widget.validator != null) {
+      return (value) => widget.validator?.call(value);
+    }
+    return (value) => BFFormValidation.validateEmpty(value: value, mandatory: widget.isRequired, message: widget.helpText);
   }
 
   Widget _buildInputField() {
@@ -144,7 +191,7 @@ class _BFInputTextFieldState extends BaseFormFieldState<BFInputTextField> {
         hintStyle: widget.hintStyle,
         fillColor: widget.fillColor ?? Colors.white,
         filled: true,
-        contentPadding: widget.contentPadding ?? const EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
+        contentPadding: widget.contentPadding ?? const EdgeInsets.only(left: 15, right: 15),
         labelText: widget.labelFloating,
         focusedBorder: widget.isReadOnly
             ? const OutlineInputBorder(
@@ -184,7 +231,7 @@ class _BFInputTextFieldState extends BaseFormFieldState<BFInputTextField> {
         prefixIcon: widget.prefixIcon,
       ),
       obscureText: widget.shouldObscure,
-      validator: (value) => widget.validator?.call(value),
+      validator: getValidator(),
       onTap: widget.onTap,
       minLines: widget.minLines,
       maxLines: widget.maxLines,

@@ -1,23 +1,23 @@
 import 'package:buffalo_design/core/base_widgets/base_widget.dart';
 import 'package:flutter/material.dart';
 
-class BaseFormField extends BaseWidget {
+class BaseFormField<T> extends BaseWidget {
   const BaseFormField({
     super.key,
-    this.initValue,
+    this.value,
     this.validator,
     this.isRequired = false,
-    required this.name,
     super.status,
     super.child,
     super.padding,
     super.margin,
+    this.helpText,
   });
 
   final bool isRequired;
   final Function? validator;
-  final dynamic initValue;
-  final String name;
+  final T? value;
+  final String? helpText;
 
   @override
   BaseFormFieldState createState() => BaseFormFieldState();
