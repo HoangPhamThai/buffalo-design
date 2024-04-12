@@ -8,4 +8,11 @@ class BFFormValidation {
     }
     return null;
   }
+
+  static String? validateDropdown<T>({required T? value, String? message, bool mandatory = false}) {
+    if (value == null && mandatory) {
+      return message ?? messageMustSelect;
+    }
+    return null;
+  }
 }

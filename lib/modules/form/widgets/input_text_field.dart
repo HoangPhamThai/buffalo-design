@@ -1,16 +1,16 @@
+import 'package:buffalo_design/buffalo_design.dart';
+import 'package:buffalo_design/core/base_widgets/base_form_field.dart';
 import 'package:buffalo_design/core/base_widgets/base_label.dart';
 import 'package:buffalo_design/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class BFInputTextField extends StatelessWidget {
+class BFInputTextField extends BaseFormField {
   final String? label;
   final String? labelFloating;
   final String? hint;
   final TextEditingController? controller;
-  final bool required;
   final String? explain;
-  final Function? validator;
   final TextCapitalization textCapitalization;
   final List<TextInputFormatter> inputFormatters;
   final TextInputType? keyboardType;
@@ -40,14 +40,12 @@ class BFInputTextField extends StatelessWidget {
   final double? labelFontSize;
   final TextStyle? labelStyle;
 
-  BFInputTextField({
+  const BFInputTextField({
     Key? key,
     this.label,
-    this.hint = '',
+    this.hint,
     this.controller,
-    this.required = false,
     this.explain,
-    this.validator,
     this.initialValue,
     this.textCapitalization = TextCapitalization.sentences,
     this.inputFormatters = const [],
@@ -77,27 +75,78 @@ class BFInputTextField extends StatelessWidget {
     this.textStyle = const TextStyle(color: Colors.black),
     this.labelFontSize,
     this.labelStyle,
+    super.isRequired,
+    super.validator,
+    super.status,
+    super.helpText,
+  })  : assert(minLines <= maxLines),
+        super(key: key);
+
+  const BFInputTextField.password({
+    Key? key,
+    this.label,
+    this.hint,
+    this.controller,
+    this.explain,
+    this.initialValue,
+    this.textCapitalization = TextCapitalization.sentences,
+    this.inputFormatters = const [],
+    this.keyboardType,
+    this.onSaved,
+    this.onChanged,
+    this.scrollPadding = const EdgeInsets.all(20),
+    this.labelMargin = const EdgeInsets.only(top: 20, bottom: 10),
+    this.autofocus = false,
+    this.suffixIcon,
+    this.axis = Axis.vertical,
+    this.minLines = 1,
+    this.maxLines = 1,
+    this.labelFloating,
+    this.expandTextField = false,
+    this.prefixIcon,
+    this.shouldObscure = true,
+    this.contentPadding,
+    this.onTap,
+    this.enableBorder,
+    this.border,
+    this.isReadOnly = false,
+    this.fillColor,
+    this.borderColor,
+    this.hintStyle,
+    this.labelHorizontalFlex = 1,
+    this.textStyle = const TextStyle(color: Colors.black),
+    this.labelFontSize,
+    this.labelStyle,
+    super.isRequired,
+    super.validator,
+    super.status,
+    super.helpText,
   })  : assert(minLines <= maxLines),
         super(key: key);
 
   @override
+  _BFInputTextFieldState createState() => _BFInputTextFieldState();
+}
+
+class _BFInputTextFieldState extends BaseFormFieldState<BFInputTextField> {
+  @override
   Widget build(BuildContext context) {
     return Container(
-      child: axis == Axis.vertical
+      child: widget.axis == Axis.vertical
           ? Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                _buildLabel(labelMargin),
+                _buildLabel(widget.labelMargin),
                 _buildInputField(),
               ],
             )
-          : expandTextField
+          : widget.expandTextField
               ? _buildInputField()
               : Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Flexible(flex: labelHorizontalFlex, child: _buildLabel(EdgeInsets.zero)),
+                    Flexible(flex: widget.labelHorizontalFlex, child: _buildLabel(EdgeInsets.zero)),
                     const SizedBox(
                       width: 20,
                     ),
@@ -108,36 +157,43 @@ class BFInputTextField extends StatelessWidget {
   }
 
   Widget _buildLabel(EdgeInsets margin) {
-    if (label == null) return Container();
+    if (widget.label == null) return Container();
     return BaseLabel(
-      label: label!,
-      isRequired: required,
+      label: widget.label!,
+      isRequired: widget.isRequired,
       margin: margin,
-      style: labelStyle,
+      style: widget.labelStyle,
     );
+  }
+
+  FormFieldValidator<String>? getValidator() {
+    if (widget.validator != null) {
+      return (value) => widget.validator?.call(value);
+    }
+    return (value) => BFFormValidation.validateEmpty(value: value, mandatory: widget.isRequired, message: widget.helpText);
   }
 
   Widget _buildInputField() {
     return TextFormField(
-      style: textStyle,
-      readOnly: isReadOnly,
-      controller: controller,
-      autofocus: autofocus,
-      onSaved: onSaved,
-      keyboardType: keyboardType,
-      textCapitalization: textCapitalization,
-      inputFormatters: inputFormatters,
+      style: widget.textStyle,
+      readOnly: widget.isReadOnly,
+      controller: widget.controller,
+      autofocus: widget.autofocus,
+      onSaved: widget.onSaved,
+      keyboardType: widget.keyboardType,
+      textCapitalization: widget.textCapitalization,
+      inputFormatters: widget.inputFormatters,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      scrollPadding: scrollPadding,
-      initialValue: initialValue,
-      onChanged: onChanged,
+      scrollPadding: widget.scrollPadding,
+      initialValue: widget.initialValue,
+      onChanged: widget.onChanged,
       decoration: InputDecoration(
-        hintStyle: hintStyle,
-        fillColor: fillColor ?? Colors.white,
+        hintStyle: widget.hintStyle,
+        fillColor: widget.fillColor ?? Colors.white,
         filled: true,
-        contentPadding: contentPadding ?? const EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
-        labelText: labelFloating,
-        focusedBorder: isReadOnly
+        contentPadding: widget.contentPadding ?? const EdgeInsets.only(left: 15, right: 15),
+        labelText: widget.labelFloating,
+        focusedBorder: widget.isReadOnly
             ? const OutlineInputBorder(
                 borderSide: BorderSide(
                   width: 1,
@@ -156,29 +212,29 @@ class BFInputTextField extends StatelessWidget {
                   Radius.circular(10),
                 ),
               ),
-        hintText: hint,
-        enabledBorder: enableBorder ??
+        hintText: widget.hint,
+        enabledBorder: widget.enableBorder ??
             OutlineInputBorder(
-              borderSide: BorderSide(width: 1, color: borderColor ?? CommonColor.borderGrey),
+              borderSide: BorderSide(width: 1, color: widget.borderColor ?? CommonColor.borderGrey),
               borderRadius: const BorderRadius.all(
                 Radius.circular(10),
               ),
             ),
-        border: border ??
+        border: widget.border ??
             OutlineInputBorder(
-              borderSide: BorderSide(width: 1, color: borderColor ?? CommonColor.borderGrey),
+              borderSide: BorderSide(width: 1, color: widget.borderColor ?? CommonColor.borderGrey),
               borderRadius: const BorderRadius.all(
                 Radius.circular(10),
               ),
             ),
-        suffixIcon: suffixIcon,
-        prefixIcon: prefixIcon,
+        suffixIcon: widget.suffixIcon,
+        prefixIcon: widget.prefixIcon,
       ),
-      obscureText: shouldObscure,
-      validator: (value) => validator?.call(value),
-      onTap: onTap,
-      minLines: minLines,
-      maxLines: maxLines,
+      obscureText: widget.shouldObscure,
+      validator: getValidator(),
+      onTap: widget.onTap,
+      minLines: widget.minLines,
+      maxLines: widget.maxLines,
     );
   }
 }
